@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>上海天气</title>
+</head>
+<body>
+  <canvas id="canvas" width="710" height="932">
+    <img id="shanghai" src="shanghai.jpg"/>
+  </canvas>
+  <script src="jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  var width = $(window).width();
+  var scale = width / 710;
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+  var shanghaiImg = new Image();
+  $('#canvas').css('zoom', scale);
+  shanghaiImg.onload = function () {
+    ctx.drawImage(document.getElementById('shanghai'), 0, 0);
+    ctx.beginPath();
+    ctx.lineWidth = 0;
+    ctx.moveTo(100,100);
+    ctx.lineTo(120,150);
+    ctx.lineTo(160,200);
+    ctx.lineTo(300,300);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.fill();
+  }
+  shanghaiImg.src = 'shanghai.jpg';
+  </script>
+</body>
+</html>
